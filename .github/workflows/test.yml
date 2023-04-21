@@ -1,0 +1,22 @@
+---
+name: Build API
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - run: pip install -r requirements.txt
+      - run: pytest
